@@ -1,9 +1,17 @@
 package damProjects.juegoAhorcado.interfaz;
 
+import damProjects.juegoAhorcado.juego.JuegoAhorcado;
+
 public class JuegoAhorcadoInterfaz {
 
-	public static void main(String[] args) {
-		System.out.println("Holaaa");
-
+	private JuegoAhorcado game;
+	
+	public JuegoAhorcadoInterfaz(JuegoAhorcado game) {
+		this.game = game;
+	}
+	
+	public String show() {
+		String str = "";
+		return str;
 	}
 }
