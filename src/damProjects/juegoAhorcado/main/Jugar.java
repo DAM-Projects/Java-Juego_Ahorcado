@@ -17,6 +17,8 @@ public class Jugar {
 		System.out.println("Ha sido usada " + n + " veces!");
 		
 		System.out.println("La frase es '" + juego + "'");
+		
+		System.out.println("Weeeeee");
 	}
 
 }
