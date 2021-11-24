@@ -20,14 +20,13 @@ public class Jugar {
 		
 		System.out.println("La frase es '" + juego + "'");
 		
-<<<<<<< HEAD
+
 		System.out.println("Weeeeee");
-=======
+
 		n = juego.intentaLetra('p');
 		n = juego.intentaLetra('q');
 		
 		System.out.println(interfaz.show());
->>>>>>> master
 	}
 
 }
