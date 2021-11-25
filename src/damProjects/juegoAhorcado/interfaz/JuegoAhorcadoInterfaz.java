@@ -2,6 +2,24 @@ package damProjects.juegoAhorcado.interfaz;
 
 import damProjects.juegoAhorcado.juego.JuegoAhorcado;
 
+/**
+ * Clase con la lógica para representar las características del juego del ahorcado.
+ * 
+ * <pre> {@code}
+ * ┌──────────────────────────┐
+ * │ ▄▄▄▄▄   ┌───────────────┐│
+ * │ ▐   O   │ A B C D E F G ││
+ * │ ▐  ╚╬╝  │ H I J K L M N ││
+ * │ ▐  ╔╩╗  │ Ñ O P Q R S T ││
+ * │ ▐       │ U V W X Y Z   ││
+ * │ ▀▀▀▀▀▀  └───────────────┘│
+ * │ ...                      │
+ * └──────────────────────────┘
+ * </pre>
+ * 
+ * @author "Jkutkut -- Jorge Re"
+ *
+ */
 public class JuegoAhorcadoInterfaz {
 
 	/*
@@ -13,25 +31,52 @@ public class JuegoAhorcadoInterfaz {
 	 *  │ ▐       │ U V W X Y Z   ││
 	 * 	│ ▀▀▀▀▀▀  └───────────────┘│
 	 * 	│ ...                      │
-	 * 	│ ...                      │
 	 * 	└──────────────────────────┘
 	 */
 	
+	/**
+	 * <p>Longitud máxima de chars que caben en una sóla línea.</p>
+	 * <p>Usado para colocar la frase.</p>
+	 */
 	private static final int WIDTH = 24;
 	
+	/**
+	 * <p>El juego a representar</p>
+	 */
 	private JuegoAhorcado game;
 	
+	
+	/* *********** CONSTRUCTORES ************* */
+	
+	/**
+	 * Constructor que toma el juego ya creado para comenzar.
+	 * 
+	 * @param game - Juego ya creado.
+	 */
 	public JuegoAhorcadoInterfaz(JuegoAhorcado game) {
 		this.game = game;
 	}
 	
+	/**
+	 * Constructor que toma la frase deseada, crea el juego y lo usa para representarlo.
+	 * @param frase - String con la frase deseada.
+	 */
+	public JuegoAhorcadoInterfaz(String frase) {
+		this.game = new JuegoAhorcado(frase);
+	}
+	
+	
+	/* *********** GETTERS ************* */
+	/**
+	 * @return String con el estado del juego.
+	 */
 	public String show() {
 		String[] body = this.getBody();
 		String[] discovered = {
 			"A B C D E F G",
-			"A B C D E F G",
-			"A B C D E F G",
-			"A B C D E F"	
+			"H I J K L M N",
+			"Ñ O P Q R S T",
+			"U V W X Y Z"	
 		};
 		String[] msg = game.toString().split(" ");
 		
