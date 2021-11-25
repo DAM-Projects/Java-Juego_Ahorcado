@@ -21,18 +21,6 @@ import damProjects.juegoAhorcado.juego.JuegoAhorcado;
  *
  */
 public class JuegoAhorcadoInterfaz {
-
-	/*
-	 *  ┌──────────────────────────┐
-	 * 	│ ▄▄▄▄▄   ┌───────────────┐│
-	 *  │ ▐   O   │	A B C D E F G ││
-	 *  │ ▐  ╚╬╝  │ H I J K L M N ││
-	 *  │ ▐  ╔╩╗  │ Ñ O P Q R S T ││
-	 *  │ ▐       │ U V W X Y Z   ││
-	 * 	│ ▀▀▀▀▀▀  └───────────────┘│
-	 * 	│ ...                      │
-	 * 	└──────────────────────────┘
-	 */
 	
 	/**
 	 * <p>Longitud máxima de chars que caben en una sóla línea.</p>
