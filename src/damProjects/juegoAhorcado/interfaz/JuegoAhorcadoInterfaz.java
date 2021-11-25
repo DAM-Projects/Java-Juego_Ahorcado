@@ -60,7 +60,7 @@ public class JuegoAhorcadoInterfaz {
 	 */
 	public String show() {
 		String[] body = this.getBody();
-		String[] discovered = {
+		String[] discovered = { // Debug
 			"A B C D E F G",
 			"H I J K L M N",
 			"Ñ O P Q R S T",
@@ -77,6 +77,7 @@ public class JuegoAhorcadoInterfaz {
 			"│ ▐       │ " + discovered[3] + "   ││\n" +
 			"│ ▀▀▀▀▀▀  └───────────────┘│\n";
 		
+		// Procesar la frase para mostrarlo debajo
 		int current = 0;
 		int cWidth, j;
 		String m;
@@ -109,6 +110,10 @@ public class JuegoAhorcadoInterfaz {
 		return str;
 	}
 	
+	/**
+	 * Retorna un array con cada línea del cuerpo como un String.
+	 * @return La forma del personaje basada en las vidas restantes del juego.
+	 */
 	private String[] getBody() {
 		char[][] body = {
 			{' ', 'O', ' '}, //  0
