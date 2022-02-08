@@ -1,14 +1,16 @@
 package damProjects.juegoAhorcado.main;
 
+import java.util.Scanner;
+
 import damProjects.juegoAhorcado.interfaz.JuegoAhorcadoInterfaz;
 import damProjects.juegoAhorcado.juego.JuegoAhorcado;
 
 public class Jugar {
 
 	public static void main(String[] args) {
-		String frase = "En un lugar de la Mancha de cuyo nombre no quiero acordarme no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero adarga antigua rocín flaco y galgo corredor Una olla de algo más vaca que carnero salpicón las más noches duelos y quebrantos los sábados lantejas los viernes algún palomino de añadidura los domingos consumían las tres partes de su hacienda";
+//		String frase = "En un lugar de la Mancha de cuyo nombre no quiero acordarme no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero adarga antigua rocín flaco y galgo corredor Una olla de algo más vaca que carnero salpicón las más noches duelos y quebrantos los sábados lantejas los viernes algún palomino de añadidura los domingos consumían las tres partes de su hacienda";
 //		String frase = "Estapalabraesdemasiadolargaparacaberaqui";
-//		String frase = "ese commit fue algo largo";
+		String frase = "ese commit fue algo largo";
 		
 		JuegoAhorcado juego = new JuegoAhorcado(frase);
 		JuegoAhorcadoInterfaz interfaz = new JuegoAhorcadoInterfaz(juego);
@@ -57,6 +59,10 @@ public class Jugar {
 //		juego.intentaLetra('W');
 		
 		System.out.println(interfaz.show());
+		
+		System.out.print("-> ");
+		Scanner sc = new Scanner(System.in);
+		char c = sc.nextLine().charAt(0);
 	}
 
 }

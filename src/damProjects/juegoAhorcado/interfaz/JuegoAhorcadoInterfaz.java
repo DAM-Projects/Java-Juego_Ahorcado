@@ -1,5 +1,7 @@
 package damProjects.juegoAhorcado.interfaz;
 
+import java.util.Scanner;
+
 import damProjects.juegoAhorcado.juego.JuegoAhorcado;
 
 /**
@@ -32,6 +34,11 @@ public class JuegoAhorcadoInterfaz {
 	 * <p>El juego a representar</p>
 	 */
 	private JuegoAhorcado game;
+	
+	/**
+	 * Scanner usado para preguntar al usuario.
+	 */
+	Scanner sc;
 	
 	
 	/* *********** CONSTRUCTORES ************* */
@@ -108,6 +115,10 @@ public class JuegoAhorcadoInterfaz {
 		str += "└──────────────────────────┘"; // Termina cerrando la interfaz
 		
 		return str;
+	}
+	
+	public String[] pideLetra() {
+		return null;
 	}
 	
 	/**
