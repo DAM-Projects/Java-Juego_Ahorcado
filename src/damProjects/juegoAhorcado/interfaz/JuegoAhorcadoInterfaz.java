@@ -129,7 +129,7 @@ public class JuegoAhorcadoInterfaz {
 		str = sc.nextLine();
 		
 		char c = str.charAt(0);
-		
+		game.intentaLetra(c);
 	}
 	
 	/**

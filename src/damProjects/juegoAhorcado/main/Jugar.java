@@ -23,9 +23,16 @@ public class Jugar {
 		JuegoAhorcado juego = new JuegoAhorcado(dict.getWord());
 		JuegoAhorcadoInterfaz interfaz = new JuegoAhorcadoInterfaz(juego, sc);
 		
-		while (juego.getVidasRestantes() > 0) {
+		while (juego.terminado()) {
 			interfaz.show();
 			interfaz.pideLetra();
+		}
+		interfaz.show();
+		if (juego.getVidasRestantes() != 0) {
+			System.out.println("Enhorabuena, lo has conseguido.");
+		}
+		else {
+			System.out.println("Ups, no lo has conseguido.");
 		}
 	}
 	
