@@ -1,5 +1,7 @@
 package damProjects.juegoAhorcado.juego;
 
+import damProjects.juegoAhorcado.procesarTexto.Desacentuar;
+
 public class JuegoAhorcado {
 	
 	private static final int VIDAS_INICIALES = 6;
@@ -16,16 +18,15 @@ public class JuegoAhorcado {
 		this.vidasRestantes = VIDAS_INICIALES; // 
 		
 		this.frase = frase.toUpperCase(); // Guarda la frase en mayúsculas
+		this.frase = Desacentuar.unaccent(this.frase); // Desacentua la frase
 		
 		// Crea una lista con los char ocultos
-		this.descubierto = new char[frase.length()];
-		for (int i = 0; i < frase.length(); i++) { // Para cada char de la frase
-			if (frase.charAt(i) == ' ') { // Si es un espacio
-				this.descubierto[i] = ' '; // Añade el espacio normal
-			}
-			else {
+		this.descubierto = new char[this.frase.length()];
+		for (int i = 0; i < this.frase.length(); i++) { // Para cada char de la frase
+			if (esOcultable(this.frase.charAt(i)))
 				this.descubierto[i] = '_'; // Oculta la información
-			}
+			else
+				this.descubierto[i] = this.frase.charAt(i);
 		}
 		
 		// Inicializa el array de chars descubiertos:
@@ -39,12 +40,34 @@ public class JuegoAhorcado {
 		return descubierto;
 	}
 	
+	public String getRealFrase() {
+		return frase;
+	}
+	
+	public char[] getCaracteres() {
+		return caracteres;
+	}
+	
+	public boolean terminado() {
+		if (this.getVidasRestantes() == 0)
+			return true;
+		for (int i = 0; i < descubierto.length; i++) {
+			if (esOcultable(frase.charAt(i)) && descubierto[i] != frase.charAt(i))
+				return false;
+		}
+		return true;
+	}
+
 	public int getVidasRestantes() {
 		return vidasRestantes;
 	}
 	
 	public String toString() {
 		return new String(this.getFrase());
+	}
+	
+	private boolean esOcultable(char c) {
+		return getIndiceLetra(c) != CHAR_NO_VALID;
 	}
 	
 	private int getIndiceLetra(char letra) {
