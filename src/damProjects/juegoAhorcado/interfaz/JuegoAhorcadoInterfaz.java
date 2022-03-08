@@ -117,8 +117,14 @@ public class JuegoAhorcadoInterfaz {
 		return str;
 	}
 	
-	public String[] pideLetra() {
-		return null;
+//	public String[] pideLetra() {
+	public void pideLetra() {
+		String str;
+		System.out.print("-> ");
+		str = sc.nextLine();
+		
+		char c = str.charAt(0);
+		
 	}
 	
 	/**

@@ -3,11 +3,14 @@ package damProjects.juegoAhorcado.juego;
 public class JuegoAhorcado {
 	
 	private static final int VIDAS_INICIALES = 6;
+	public static final int CHAR_NO_VALID = -1;
+	public static final int CHAR_YA_USADO = -2;
 	
 	private int vidasRestantes;
 	
 	private String frase;
 	private char[] descubierto;
+	private char[] caracteres;
 	
 	public JuegoAhorcado(String frase) {
 		this.vidasRestantes = VIDAS_INICIALES; // 
@@ -24,6 +27,12 @@ public class JuegoAhorcado {
 				this.descubierto[i] = '_'; // Oculta la información
 			}
 		}
+		
+		// Inicializa el array de chars descubiertos:
+		this.caracteres = new char[27];
+		for (int i = 0; i < 27; i++) {
+			this.caracteres[i] = ' ';
+		}
 	}
 	
 	public char[] getFrase() {
@@ -38,7 +47,23 @@ public class JuegoAhorcado {
 		return new String(this.getFrase());
 	}
 	
+	private int getIndiceLetra(char letra) {
+		if (letra >= 'A' && letra <= 'Z')
+			return (int) (letra - 'A');
+		if (letra == 'Ñ')
+			return 26;
+		return CHAR_NO_VALID;
+	}
+	
 	public int intentaLetra(char letra) {
+		letra = Character.toUpperCase(letra);
+		int indiceLetra = getIndiceLetra(letra);
+		
+		if (indiceLetra == CHAR_NO_VALID)
+			return CHAR_NO_VALID;
+		if (this.caracteres[indiceLetra] != ' ')
+			return CHAR_YA_USADO;
+		
 		int vecesUsadas = 0; // Veces que la letra se ha usado en el programa
 		for (int i = 0; i < frase.length(); i++) {
 			if (letra == frase.charAt(i)) { // Si la letra se usa en esta posición
