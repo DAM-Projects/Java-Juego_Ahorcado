@@ -43,7 +43,7 @@ public class Jugar {
 				System.out.println("La frase era\n" + juego.getRealFrase());
 			}
 			
-			if (!getBoolean("Quieres continuar?"))
+			if (!getBoolean("Quieres continuar? "))
 				running = false;
 		}
 	}
