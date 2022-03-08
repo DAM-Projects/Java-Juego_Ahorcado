@@ -19,12 +19,4 @@ public class Diccionario {
 	public String getWord() {
 		return words.get(r.nextInt(words.size()));
 	}
-	
-	public static void main(String[] args) throws IOException {
-		Diccionario dic = new Diccionario("src/damProjects/juegoAhorcado/diccionario/diccionario_es.txt");
-		
-		for (int i = 0; i < 10; i++) {
-			System.out.println(dic.getWord());
-		}
-	}
 }
