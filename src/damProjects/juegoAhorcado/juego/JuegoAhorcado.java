@@ -87,7 +87,7 @@ public class JuegoAhorcado {
 		if (this.caracteres[indiceLetra] != ' ')
 			return CHAR_YA_USADO;
 		
-		int vecesUsadas = 0; // Veces que la letra se ha usado en el programa
+		int vecesUsadas = 0; // Veces que la letra se ha usado en la frase
 		for (int i = 0; i < frase.length(); i++) {
 			if (letra == frase.charAt(i)) { // Si la letra se usa en esta posición
 				descubierto[i] = letra; // Pon la letra en la frase descubierta
@@ -95,7 +95,9 @@ public class JuegoAhorcado {
 			}
 		}
 		
-		if (vecesUsadas == 0) {
+		this.caracteres[indiceLetra] = letra; // Marca en la lista de caracteres la letra usada
+		
+		if (vecesUsadas == 0) { // Si no hemos descubierto ninguna letra
 			this.vidasRestantes--;
 		}
 		return vecesUsadas;
