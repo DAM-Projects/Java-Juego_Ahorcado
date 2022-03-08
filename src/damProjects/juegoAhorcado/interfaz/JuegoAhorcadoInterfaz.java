@@ -85,8 +85,6 @@ public class JuegoAhorcadoInterfaz {
 			"│ ▀▀▀▀▀▀  └───────────────┘│\n";
 		
 		// Procesar la frase para mostrarlo debajo
-		int current = 0;
-		int cWidth, j;
 		String m;
 		for (int i = 0; i < msg.length; i++) {
 			if (msg[i].length() > WIDTH) { // Si una palabra es muy larga

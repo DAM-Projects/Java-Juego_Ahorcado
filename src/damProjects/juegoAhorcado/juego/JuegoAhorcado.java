@@ -4,16 +4,45 @@ import damProjects.juegoAhorcado.procesarTexto.Desacentuar;
 
 public class JuegoAhorcado {
 	
+	/**
+	 * Vidas que tiene un jugador al inicio.
+	 */
 	private static final int VIDAS_INICIALES = 6;
+	
+	/**
+	 * Código de error en intentaLetra cuando el caracter introducido no es válido.
+	 */
 	public static final int CHAR_NO_VALID = -1;
+	
+	/**
+	 * Código de error en intentaLetra cuando el caracter introducido ya se ha usado.
+	 */
 	public static final int CHAR_YA_USADO = -2;
 	
+	/**
+	 * Vidas restantes del jugador.
+	 */
 	private int vidasRestantes;
 	
+	/**
+	 * Frase solución.
+	 */
 	private String frase;
+	
+	/**
+	 * Secuencia de chars de la frase que ya hemos descubierto.
+	 */
 	private char[] descubierto;
+	
+	/**
+	 * Secuencia de chars que nos indica si hemos (o no) usado una letra.
+	 */
 	private char[] caracteres;
 	
+	/**
+	 * Inicializa la clase con la frase a usar como parámetro.
+	 * @param frase
+	 */
 	public JuegoAhorcado(String frase) {
 		this.vidasRestantes = VIDAS_INICIALES; // inicia vidas
 		
@@ -30,24 +59,40 @@ public class JuegoAhorcado {
 		}
 		
 		// Inicializa el array de chars descubiertos:
-		this.caracteres = new char[30];
+		this.caracteres = new char[28];
 		for (int i = 0; i < this.caracteres.length; i++) {
 			this.caracteres[i] = ' ';
 		}
 	}
 	
+	// GETTERS
+	
+	/**
+	 * Frase descubierta por el momento.
+	 * @return frase descubierta como char[].
+	 */
 	public char[] getFrase() {
 		return descubierto;
 	}
 	
+	/**
+	 * @return Frase original.
+	 */
 	public String getRealFrase() {
 		return frase;
 	}
 	
+	/**
+	 * @return Char[] con los caracteres usados por el momento.
+	 */
 	public char[] getCaracteres() {
 		return caracteres;
 	}
 	
+	/**
+	 * Si no quedan vidas o hemos resuelto la frase, verdadero.
+	 * @return Si el juego ha terminado o no.
+	 */
 	public boolean terminado() {
 		if (this.getVidasRestantes() == 0)
 			return true;
@@ -58,6 +103,9 @@ public class JuegoAhorcado {
 		return true;
 	}
 
+	/**
+	 * @return Número de vidas restantes.
+	 */
 	public int getVidasRestantes() {
 		return vidasRestantes;
 	}
@@ -66,11 +114,21 @@ public class JuegoAhorcado {
 		return new String(this.getFrase());
 	}
 	
-	private boolean esOcultable(char c) {
+	/**
+	 * Si el char dado necesita ser ocultado al inicio del juego
+	 * @param c char a verificar
+	 * @return Si hay que ocultarlo o no.
+	 */
+	private static boolean esOcultable(char c) {
 		return getIndiceLetra(c) != CHAR_NO_VALID;
 	}
 	
-	private int getIndiceLetra(char letra) {
+	/**
+	 * El índice del array donde se almacena la letra dada. Si no es válido, devuelve CHAR_NO_VALID
+	 * @param letra char a analizar.
+	 * @return El valor del array o CHAR_NO_VALID.
+	 */
+	private static int getIndiceLetra(char letra) {
 		if (letra >= 'A' && letra <= 'Z')
 			return (int) (letra - 'A');
 		if (letra == 'Ñ')
@@ -78,6 +136,14 @@ public class JuegoAhorcado {
 		return CHAR_NO_VALID;
 	}
 	
+	/**
+	 * Intenta usar la letra dada y devolver el número de veces usado.
+	 * 
+	 * Si ya ha sido usada o no es válida, el valor retornado es un código de error.
+	 * 
+	 * @param letra char a usar.
+	 * @return El número de veces usadas o CHAR_NO_VALID o CHAR_YA_USADO.
+	 */
 	public int intentaLetra(char letra) {
 		letra = Character.toUpperCase(letra);
 		int indiceLetra = getIndiceLetra(letra);
