@@ -12,7 +12,8 @@ public class Jugar {
 	
 	private static String[] DICCIONARIOS_DISPONIBLES = {
 		"diccionario_es.txt",
-		"frases_cine.txt"
+		"frases_cine.en.txt",
+		"frases_cine.es.txt"
 	};
 	
 	public static void main(String[] args) {
@@ -20,20 +21,30 @@ public class Jugar {
 		
 		Diccionario dict = getDiccionario();
 		
-		JuegoAhorcado juego = new JuegoAhorcado(dict.getWord());
-		JuegoAhorcadoInterfaz interfaz = new JuegoAhorcadoInterfaz(juego, sc);
+		JuegoAhorcado juego;
+		JuegoAhorcadoInterfaz interfaz;
 		
-		while (!juego.terminado()) {
+		boolean running = true;
+		
+		while (running) {
+			juego = new JuegoAhorcado(dict.getWord());
+			interfaz = new JuegoAhorcadoInterfaz(juego, sc);
+			
+			while (!juego.terminado()) {
+				interfaz.show();
+				interfaz.pideLetra();
+			}
 			interfaz.show();
-			interfaz.pideLetra();
-		}
-		interfaz.show();
-		if (juego.getVidasRestantes() > 0) {
-			System.out.println("Enhorabuena, lo has conseguido.");
-		}
-		else {
-			System.out.println("Ups, no lo has conseguido.");
-			System.out.println("La frase era\n" + juego.getRealFrase());
+			if (juego.getVidasRestantes() > 0) {
+				System.out.println("Enhorabuena, lo has conseguido.");
+			}
+			else {
+				System.out.println("Ups, no lo has conseguido.");
+				System.out.println("La frase era\n" + juego.getRealFrase());
+			}
+			
+			if (!getBoolean("Quieres continuar?"))
+				running = false;
 		}
 	}
 	
