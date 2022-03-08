@@ -15,7 +15,7 @@ public class JuegoAhorcado {
 	private char[] caracteres;
 	
 	public JuegoAhorcado(String frase) {
-		this.vidasRestantes = VIDAS_INICIALES; // 
+		this.vidasRestantes = VIDAS_INICIALES; // inicia vidas
 		
 		this.frase = frase.toUpperCase(); // Guarda la frase en mayúsculas
 		this.frase = Desacentuar.unaccent(this.frase); // Desacentua la frase
@@ -30,8 +30,8 @@ public class JuegoAhorcado {
 		}
 		
 		// Inicializa el array de chars descubiertos:
-		this.caracteres = new char[27];
-		for (int i = 0; i < 27; i++) {
+		this.caracteres = new char[30];
+		for (int i = 0; i < this.caracteres.length; i++) {
 			this.caracteres[i] = ' ';
 		}
 	}

@@ -72,12 +72,7 @@ public class JuegoAhorcadoInterfaz {
 	 */
 	public String toString() {
 		String[] body = this.getBody();
-		String[] discovered = { // Debug
-			"A B C D E F G",
-			"H I J K L M N",
-			"Ñ O P Q R S T",
-			"U V W X Y Z"	
-		};
+		String[] discovered = this.getDiscovered();
 		String[] msg = game.toString().split(" ");
 		
 		String str = 
@@ -86,7 +81,7 @@ public class JuegoAhorcadoInterfaz {
 			"│ ▐  " + body[0] + "  │ " + discovered[0] + " ││\n" +
 			"│ ▐  " + body[1] + "  │ " + discovered[1] + " ││\n" +
 			"│ ▐  " + body[2] + "  │ " + discovered[2] + " ││\n" +
-			"│ ▐       │ " + discovered[3] + "   ││\n" +
+			"│ ▐       │ "             + discovered[3] + " ││\n" +
 			"│ ▀▀▀▀▀▀  └───────────────┘│\n";
 		
 		// Procesar la frase para mostrarlo debajo
@@ -122,6 +117,22 @@ public class JuegoAhorcadoInterfaz {
 		return str;
 	}
 	
+	private String[] getDiscovered() {
+		char[] chars = game.getCaracteres();
+		
+		String[] discovered = new String[4];
+		
+		for (int i = 0, j; i < 4; i++) {
+			discovered[i] = "" + chars[i * 7];
+			for (j = 1; j < 7; j++) {
+				discovered[i] += " " + chars[i * 7 + j];
+			}
+			
+		}
+		
+		return discovered; 
+	}
+
 	public void pideLetra() {
 		int status = JuegoAhorcado.CHAR_NO_VALID;
 		String str;
