@@ -122,14 +122,23 @@ public class JuegoAhorcadoInterfaz {
 		return str;
 	}
 	
-//	public String[] pideLetra() {
 	public void pideLetra() {
+		int status = JuegoAhorcado.CHAR_NO_VALID;
 		String str;
-		System.out.print("-> ");
-		str = sc.nextLine();
-		
-		char c = str.charAt(0);
-		game.intentaLetra(c);
+		char c;
+				
+		while (status < 0) {
+			System.out.print("-> ");
+			str = sc.nextLine();
+			c = str.charAt(0);
+			
+			status = game.intentaLetra(c);
+			if (status == JuegoAhorcado.CHAR_NO_VALID)
+				System.out.println("El caracter introducido no es válido");
+			else if (status == JuegoAhorcado.CHAR_YA_USADO)
+				System.out.println("Ya has usado esta letra :S");
+		}
+		System.out.println("Esta letra se usa un total de " + status + " veces.");
 	}
 	
 	/**
