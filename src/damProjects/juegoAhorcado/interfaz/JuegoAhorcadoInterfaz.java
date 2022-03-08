@@ -48,24 +48,29 @@ public class JuegoAhorcadoInterfaz {
 	 * 
 	 * @param game - Juego ya creado.
 	 */
-	public JuegoAhorcadoInterfaz(JuegoAhorcado game) {
+	public JuegoAhorcadoInterfaz(JuegoAhorcado game, Scanner sc) {
 		this.game = game;
+		this.sc = sc;
 	}
 	
 	/**
 	 * Constructor que toma la frase deseada, crea el juego y lo usa para representarlo.
 	 * @param frase - String con la frase deseada.
 	 */
-	public JuegoAhorcadoInterfaz(String frase) {
+	public JuegoAhorcadoInterfaz(String frase, Scanner sc) {
 		this.game = new JuegoAhorcado(frase);
+		this.sc = sc;
 	}
 	
+	public void show() {
+		System.out.println(this.toString());
+	}
 	
 	/* *********** GETTERS ************* */
 	/**
 	 * @return String con el estado del juego.
 	 */
-	public String show() {
+	public String toString() {
 		String[] body = this.getBody();
 		String[] discovered = { // Debug
 			"A B C D E F G",
