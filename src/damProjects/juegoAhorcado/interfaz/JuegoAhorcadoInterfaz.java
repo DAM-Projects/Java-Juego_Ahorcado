@@ -139,6 +139,11 @@ public class JuegoAhorcadoInterfaz {
 		while (status < 0) {
 			System.out.print("-> ");
 			str = sc.nextLine();
+			if (str.length() != 1) {
+				System.out.println("Tienes que introducir una sola letra.");
+				continue;
+			}
+
 			c = str.charAt(0);
 			
 			status = game.intentaLetra(c);
